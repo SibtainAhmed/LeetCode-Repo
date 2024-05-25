@@ -3,21 +3,29 @@ class Solution:
         words = {w for w in wordDict}
         res =[]
 
-        def validString(st):
-            # print(st)
-            lst = st.split(' ')
-            for w in lst:
-                if w not in words:
-                    return
-            # print('true')
-            res.append(st)
+        # def validString(st):
+        #     lst = st.split(' ')
+        #     for w in lst:
+        #         if w not in words:
+        #             return
+        #     res.append(st)
+        def join(st,w):
+            if not st:
+                return w
+            return st+' '+w
 
-        def dfs(i,st):
+        def dfs(i,st, word):
             if i>=len(s):
-                validString(st)
+                if word in words:
+                    nonlocal res
+                    res.append(join(st,word))
+                # validString(st)
             else:
-                dfs(i+1, st+s[i])
-                dfs(i+1, st+' '+s[i])
-                # dfs(i+1, st+' ')
-        dfs(0,'')
+                if word in words:
+                    dfs(i+1, st, word+s[i])
+                    dfs(i+1, join(st,word), s[i])
+                else:
+                    dfs(i+1, st, word+s[i])
+                    
+        dfs(0,'','')
         return res
