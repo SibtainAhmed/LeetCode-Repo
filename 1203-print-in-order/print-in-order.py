@@ -1,26 +1,23 @@
+from threading import Semaphore
 class Foo:
     def __init__(self):
-        self.firstPass = False
-        self.secondPass = False
-
+        self.secondSem = Semaphore(0)
+        self.thirdSem = Semaphore(0)
 
     def first(self, printFirst: 'Callable[[], None]') -> None:
-        
         # printFirst() outputs "first". Do not change or remove this line.
         printFirst()
-        self.firstPass = True
-
+        self.secondSem.release()
 
     def second(self, printSecond: 'Callable[[], None]') -> None:
-        while not(self.firstPass):
-            continue
         # printSecond() outputs "second". Do not change or remove this line.
+        self.secondSem.acquire()
         printSecond()
-        self.secondPass = True
+        self.thirdSem.release()
 
 
     def third(self, printThird: 'Callable[[], None]') -> None:
-        while not(self.secondPass):
-            continue
         # printThird() outputs "third". Do not change or remove this line.
+        self.thirdSem.acquire()
         printThird()
+  
