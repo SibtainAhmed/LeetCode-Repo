@@ -7,7 +7,7 @@ class Solution:
                 cntArray[-1] += 1
             else:
                 cntArray[v] += 1
-        print(cntArray)
+        # print(cntArray)
         val = 0
         for i in range(ln,-1,-1):
             val += cntArray[i]
