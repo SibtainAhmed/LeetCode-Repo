@@ -7,11 +7,10 @@ class Solution:
                 cntArray[-1] += 1
             else:
                 cntArray[v] += 1
-        # print(cntArray)
         val = 0
         for i in range(ln,-1,-1):
             val += cntArray[i]
-            if val > i:
+            if val > i+1:
                 return -1
             elif val == i:
                 return i
