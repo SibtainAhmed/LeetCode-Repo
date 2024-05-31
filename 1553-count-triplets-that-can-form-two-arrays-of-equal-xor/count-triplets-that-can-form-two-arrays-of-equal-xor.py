@@ -1,7 +1,5 @@
 class Solution:
     def countTriplets(self, arr: List[int]) -> int:
-        if len(arr)<2:
-            return 0
         res = 0
         # i, j = 0, 1
         a = b = 0
