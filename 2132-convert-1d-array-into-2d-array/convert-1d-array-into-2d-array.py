@@ -3,8 +3,5 @@ class Solution:
         if len(original) != m*n: return []
         res = []
         for r in range(m):
-            temp = []
-            for c in range(n):
-                temp.append(original[r*n + c])
-            res.append(temp)
+            res.append(original[r*n:r*n+n])
         return res
