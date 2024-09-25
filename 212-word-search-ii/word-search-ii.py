@@ -1,20 +1,16 @@
 class TrieNode:
     def __init__(self):
         self.children = {}
-        self.isWord = False
         self.word = None
 class Solution:
     def makeTrie(self, arr):
         rootTemp = TrieNode()
-        # print(rootTemp.isWord, 'not None')
         for word in arr:
             node = rootTemp
             for w in word:
                 if w not in node.children:
                     node.children[w] = TrieNode()
-                # node.children[w].value += 1
                 node = node.children[w]
-            node.isWord = True
             node.word = word
         return rootTemp
 
@@ -24,9 +20,9 @@ class Solution:
         m, n = len(board)-1, len(board[0])-1
         def dfs(r,c, node):
             temp = []
-            if node.isWord:
-                node.isWord = False
+            if node.word:
                 res.append(node.word)
+                node.word = None
             temp.append(board[r][c])
             board[r][c] = '#'
             if r < m and board[r+1][c] in node.children:
@@ -41,6 +37,5 @@ class Solution:
         for r in range(m+1):
             for c in range(n+1):
                 if board[r][c] in root.children:
-                    print(r, c)
                     dfs(r,c, root.children[board[r][c]])
         return res
