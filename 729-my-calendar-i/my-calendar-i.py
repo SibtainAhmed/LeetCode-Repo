@@ -1,15 +1,14 @@
 class MyCalendar:
 
     def __init__(self):
-      self.startArr = []
-      self.endArr = []  
+      self.calendar = []
+       
 
     def book(self, start: int, end: int) -> bool:
-        for s,e in zip(self.startArr, self.endArr):
+        for s,e in self.calendar:
             if start < e and s < end:
                 return False 
-        self.startArr.append(start)
-        self.endArr.append(end)
+        self.calendar.append((start, end))
         return True
 
 
