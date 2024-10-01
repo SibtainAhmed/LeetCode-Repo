@@ -9,13 +9,6 @@ class Solution:
             if not(key):
                 if value%2==0:continue
                 else: return False
-            rem[key] -= 1
-            
-            for i in range(value):
-                
-                if rem[abs(key-k)]:
-                    rem[abs(key-k)] -= 1
-                    rem[key] -= 1
-                else:
-                    return False
+            if rem[key] == rem[abs(key-k)]:continue
+            else: return False
         return True
