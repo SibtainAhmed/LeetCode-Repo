@@ -3,7 +3,7 @@ class Solution:
         res = 0
         mx = -math.inf
         maxArr = [0]*len(nums)
-        for i in range(len(nums)-1, -1,-1):
+        for i in range(len(nums)-1, 0,-1):
             n = nums[i]
             mx = max(mx, n)
             maxArr[i] = mx
@@ -14,5 +14,4 @@ class Solution:
             else:
                 while ed >= st and maxArr[ed] < nums[st]:
                     st += 1
-            # res = max(res, maxArr[i] - minArr[i])
         return res
