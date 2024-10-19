@@ -2,7 +2,8 @@ class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         visited = set()
         results = set()
-        directions = [(1,0),(0,1),(-1,0),(0,-1)]
+        directions = [(-1,0),(0,1),(1,0),(0,-1)]
+        records = {}
         m, n = len(heights), len(heights[0])
 
         def dfs(r,c, pVal):
@@ -16,6 +17,8 @@ class Solution:
                 return [False, False]
             elif (r,c) in results:
                 return [True, True]
+            # elif (r,c) in records:
+            #     return records[(r,c)]
             val = [False, False]
             visited.add((r,c))
             for dr,dc in directions:
@@ -25,9 +28,11 @@ class Solution:
                     results.add((r,c))
                     break
             visited.remove((r,c))
+            # records[(r,c)] = val
             return val
         
         for r in range(m):
             for c in range(n):
                 dfs(r,c,heights[r][c])
+        print(records)
         return [[r,c] for r,c in results]
