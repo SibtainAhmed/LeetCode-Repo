@@ -2,7 +2,7 @@ class Solution:
     def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
         res = 0
         nums.sort()
-        print(nums)
+        # print(nums)
         
         def findMin(i,val):
             left, right = i+1, len(nums)-1
@@ -34,6 +34,6 @@ class Solution:
             mn = findMin(i,n)
             # if not(mn): continue
             mx = findMax(i,n)
-            print(n, mn, mx)
+            # print(n, mn, mx)
             res += (mx-mn+1)
         return res
