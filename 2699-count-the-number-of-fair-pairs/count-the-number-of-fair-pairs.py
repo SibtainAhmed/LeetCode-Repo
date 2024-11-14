@@ -13,7 +13,7 @@ class Solution:
                     right = mid - 1
                 else:
                     left = mid + 1
-            return right
+            return left 
         
         
         def findMax(i,val):
@@ -21,7 +21,7 @@ class Solution:
             mid = 0
             while left <= right:
                 mid = ((left+right)//2)
-                if nums[mid]+val > upper:
+                if nums[mid]+val >= upper+1:
                     right = mid - 1
                 else:
                     left = mid + 1
@@ -31,5 +31,9 @@ class Solution:
             n = nums[i]
             if max(n*2,n+nums[i+1]) > upper: 
                 break
-            res += findMax(i,n) - findMin(i,n)
+            mn = findMin(i,n)
+            # if not(mn): continue
+            mx = findMax(i,n)
+            print(n, mn, mx)
+            res += (mx-mn+1)
         return res
