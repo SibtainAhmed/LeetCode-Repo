@@ -12,5 +12,4 @@ class Solution:
                 x = i+1
             if x > y: continue
             ans += y - x + 1 
-            # print(ans)
         return ans
