@@ -1,7 +1,6 @@
 class Solution:
     def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
         nums.sort() 
-        # print(nums)
         ans = 0 
         for i in range(len(nums)-1):
             num = nums[i]
@@ -10,9 +9,7 @@ class Solution:
             x = bisect_left(nums, lower-num) 
             y = bisect_right(nums, upper-num) - 1
             if x <= i:
-                x = min(i+1, y)
-            # print(num, x, y)
-            # y = max(y, i+1) 
+                x = i+1
             if x > y: continue
             ans += y - x + 1 
             # print(ans)
